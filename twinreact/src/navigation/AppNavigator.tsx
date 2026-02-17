@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/HomeScreen";
-import Dashboard from "../screens/DashboardScreen";
+import Sensor from "../screens/SensorScreen";
+import Pc from "../screens/PcScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -10,7 +11,8 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Sensor" component={Sensor} />
+        <Stack.Screen name="Pc" component={Pc} />
       </Stack.Navigator>
     </NavigationContainer>
   );
