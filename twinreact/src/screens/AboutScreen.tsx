@@ -1,4 +1,5 @@
-import { View, Text, SafeAreaView, StatusBar, ScrollView, StyleSheet } from "react-native";
+import { View, Text, StatusBar, ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AboutScreen() {
   return (
@@ -79,7 +80,7 @@ export default function AboutScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8FAFC",
+    backgroundColor: "#fcf8f8",
   },
   headerLogo: {
     width: 60,
