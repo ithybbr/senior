@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AboutScreen from "../screens/AboutScreen";
 import PcScreen from "../screens/PcScreen";
 import SensorScreen from "../screens/SensorScreen";
-import _3dScreen from "../screens/3dScreen";
+import _2dScreen from "../screens/2dScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +39,7 @@ export default function BottomTabs() {
       <Tab.Screen name="About" component={AboutScreen} />
       <Tab.Screen name="Pcs" component={PcScreen} />
       <Tab.Screen name="Sensors" component={SensorScreen} />
-      <Tab.Screen name="3D" component={_3dScreen} />
+      <Tab.Screen name="2D Map" component={_2dScreen} />
     </Tab.Navigator>
   );
 }
