@@ -16,6 +16,8 @@ const PcScreen: React.FC = () => {
             source={{
               uri: `${BASE_URL}?panelId=panel-${p}&__feature.dashboardSceneSolo=true&kiosk`,
             }}
+            importantForAccessibility="no-hide-descendants"
+            accessibilityElementsHidden={true}
             style={styles.webview}
           />
         </View>
