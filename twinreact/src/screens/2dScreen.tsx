@@ -69,7 +69,6 @@ const SENSORS: Sensor[] = [
   { id: 'sensor-3', label: 'microphone', x: 275, y: 360, w: 40, h: 20 },
 ];
 export default function _2dScreen() {
-<<<<<<< HEAD
   const { theme } = useTheme();
   const scale = (SCREEN_WIDTH - PADDING * 2) / MAP_W;
 
@@ -84,13 +83,6 @@ export default function _2dScreen() {
           },
         ]}
       >
-=======
-  const scale = (SCREEN_WIDTH - PADDING * 2) / MAP_W;
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.mapWrapper}>
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
         <Svg
           width={MAP_W * scale}
           height={MAP_H * scale}
@@ -100,13 +92,8 @@ export default function _2dScreen() {
           <Rect
             x={15} y={15}
             width={MAP_W - 30} height={MAP_H - 30}
-<<<<<<< HEAD
             fill={theme.mapBackground}
             stroke={theme.mapBorder}
-=======
-            fill="#f7f7f5"
-            stroke="#222"
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
             strokeWidth={2}
             rx={2}
           />
@@ -118,13 +105,8 @@ export default function _2dScreen() {
                 <Rect
                   x={room.x} y={room.y}
                   width={room.w} height={room.h}
-<<<<<<< HEAD
                   fill={theme.mapRoomFill}
                   stroke={theme.mapBorder}
-=======
-                  fill={'#e8f0fe'}
-                  stroke="#222"
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
                   strokeWidth={1.5}
                 />
               </G>
@@ -137,11 +119,7 @@ export default function _2dScreen() {
               <Rect key={stroke.id}
                 x={stroke.x} y={stroke.y}
                 width={stroke.w} height={stroke.h}
-<<<<<<< HEAD
                 fill={theme.mapRoomFill}
-=======
-                fill={'#e8f0fe'}
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
               />
             );
           })}
@@ -151,13 +129,8 @@ export default function _2dScreen() {
                 <Rect
                   x={pc.x} y={pc.y}
                   width={pc.w} height={pc.h}
-<<<<<<< HEAD
                   fill={theme.mapPcFill}
                   stroke={theme.mapBorder}
-=======
-                  fill={'#e8f0fe'}
-                  stroke="#222"
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
                   strokeWidth={1.5}
                 />
                 <SvgText
@@ -165,11 +138,7 @@ export default function _2dScreen() {
                   y={pc.y + pc.h / 2}
                   textAnchor="middle"
                   fontSize={10}
-<<<<<<< HEAD
                   fill={theme.mapText}
-=======
-                  fill="#111"
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
                 >
                   {pc.label}
                 </SvgText>
@@ -182,13 +151,8 @@ export default function _2dScreen() {
                 <Circle
                   cx={sensor.x} cy={sensor.y}
                   r={sensor.w / 14}
-<<<<<<< HEAD
                   fill={theme.mapSensorFill}
                   stroke={theme.mapBorder}
-=======
-                  fill={'#e8f0fe'}
-                  stroke="#222"
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
                   strokeWidth={1.5}
                 />
                 <SvgText
@@ -196,11 +160,7 @@ export default function _2dScreen() {
                   y={sensor.y + sensor.h / 2}
                   textAnchor="middle"
                   fontSize={8}
-<<<<<<< HEAD
                   fill={theme.mapText}
-=======
-                  fill="#111"
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
                 > 
                   {sensor.label}
                 </SvgText>
@@ -266,8 +226,4 @@ const styles = StyleSheet.create({
     color: '#1a56db',
     fontWeight: '700',
   },
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> c1c980888d88d3756a3602f6ea66643a12f5e61c
