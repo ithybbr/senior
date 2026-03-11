@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView, StyleSheet, Dimensions } from "react-native";
 import { WebView } from "react-native-webview";
+import { useTheme } from "../theme/ThemeContext";
 
 const panels = [8, 7, 9, 10, 14];
 
@@ -8,10 +9,20 @@ const BASE_URL =
   "http://192.168.0.127:3000/d-solo/adh5qj6/enviromental-data";
 
 const SensorScreen: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={[
+        styles.container,
+        { backgroundColor: theme.screenBackground },
+      ]}
+    >
       {panels.map((p) => (
-        <View key={p} style={styles.card}>
+        <View
+          key={p}
+          style={[styles.card, { backgroundColor: theme.cardBackground }]}
+        >
           <WebView
             source={{
               uri: `${BASE_URL}?panelId=panel-${p}&__feature.dashboardSceneSolo=true&kiosk`,

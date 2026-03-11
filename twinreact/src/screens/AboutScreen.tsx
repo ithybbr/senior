@@ -1,18 +1,21 @@
-import { View, Text, StatusBar, ScrollView, StyleSheet } from "react-native";
+import { View, Text, StatusBar, ScrollView, StyleSheet, Switch } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useTheme } from "../theme/ThemeContext";
 
 export default function AboutScreen() {
+  const { theme, mode, toggleTheme } = useTheme();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
+    <View style={[styles.container, { backgroundColor: theme.screenBackground }]}>
+      <StatusBar barStyle={mode === "dark" ? "light-content" : "dark-content"} />
       <ScrollView showsVerticalScrollIndicator={false}>
         
         {/* Header Section */}
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Digital Twin</Text>
-          <Text style={styles.headerSubtitle}>Scope Lab Monitoring</Text>
-          <View style={styles.divider} />
-          <Text style={styles.description}>
+        <View style={[styles.header, { backgroundColor: theme.headerBackground }]}>
+          <Text style={[styles.headerTitle, { color: theme.headerTitle }]}>Digital Twin</Text>
+          <Text style={[styles.headerSubtitle, { color: theme.headerSubtitle }]}>Scope Lab Monitoring</Text>
+          <View style={[styles.divider, { backgroundColor: theme.headerDivider }]} />
+          <Text style={[styles.description, { color: theme.headerDescription }]}>
             A centralized system designed to visualize, compare, and analyze 
             laboratory conditions and equipment status in real-time.
           </Text>
@@ -20,60 +23,75 @@ export default function AboutScreen() {
 
         <View style={styles.content}>
           {/* Section: How it Works */}
-          <Text style={styles.sectionTitle}>System Architecture</Text>
+          <Text style={[styles.sectionTitle, { color: theme.sectionTitle }]}>System Architecture</Text>
           
-          <View style={styles.card}>
+          <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
             <Text style={styles.cardEmoji}>📡</Text>
             <View style={styles.cardBody}>
-              <Text style={styles.cardTitle}>Data Collection</Text>
-              <Text style={styles.cardText}>
+              <Text style={[styles.cardTitle, { color: theme.cardTitle }]}>Data Collection</Text>
+              <Text style={[styles.cardText, { color: theme.cardText }]}>
                 Uses ESP32 and Raspberry Pi Pico W with DHT11 (Temp/Humidity) 
                 and MQ-3 (Gas) sensors to monitor the lab environment.
               </Text>
             </View>
           </View>
 
-          <View style={styles.card}>
+          <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
             <Text style={styles.cardEmoji}>🌐</Text>
             <View style={styles.cardBody}>
-              <Text style={styles.cardTitle}>Connectivity</Text>
-              <Text style={styles.cardText}>
+              <Text style={[styles.cardTitle, { color: theme.cardTitle }]}>Connectivity</Text>
+              <Text style={[styles.cardText, { color: theme.cardText }]}>
                 Seamless wireless transmission via MQTT protocol (Mosquitto) 
                 ensuring low-latency updates across the network.
               </Text>
             </View>
           </View>
 
-          <View style={styles.card}>
+          <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
             <Text style={styles.cardEmoji}>📊</Text>
             <View style={styles.cardBody}>
-              <Text style={styles.cardTitle}>Storage & UI</Text>
-              <Text style={styles.cardText}>
+              <Text style={[styles.cardTitle, { color: theme.cardTitle }]}>Storage & UI</Text>
+              <Text style={[styles.cardText, { color: theme.cardText }]}>
                 Time-stamped data is managed in InfluxDB and visualized 
                 through dynamic Grafana dashboards and this mobile app.
               </Text>
             </View>
           </View>
 
-          <View style={styles.card}>
+          <View style={[styles.card, { backgroundColor: theme.cardBackground }]}>
             <Text style={styles.cardEmoji}>🧠</Text>
             <View style={styles.cardBody}>
-              <Text style={styles.cardTitle}>Intelligence</Text>
-              <Text style={styles.cardText}>
+              <Text style={[styles.cardTitle, { color: theme.cardTitle }]}>Intelligence</Text>
+              <Text style={[styles.cardText, { color: theme.cardText }]}>
                 Integrated ML layer for anomaly detection and automated 
                 people counting using visual inputs.
               </Text>
             </View>
           </View>
 
+          {/* Theme switch */}
+          <View style={styles.themeSwitchRow}>
+            <Text style={[styles.themeSwitchLabel, { color: theme.sectionTitle }]}>
+              Dark mode
+            </Text>
+            <Switch
+              value={mode === "dark"}
+              onValueChange={toggleTheme}
+              thumbColor={mode === "dark" ? theme.tabActiveTint : "#f4f3f4"}
+              trackColor={{ false: "#d1d5db", true: "#0f172a" }}
+            />
+          </View>
+
           {/* Footer Info */}
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Developed by:</Text>
-            <Text style={styles.teamText}>Saida K., Asset K., Miras M., Nursultan B., Sherniyaz Z.</Text>
+            <Text style={[styles.footerText, { color: theme.footerText }]}>Developed by:</Text>
+            <Text style={[styles.teamText, { color: theme.footerMuted }]}>
+              Saida K., Asset K., Miras M., Nursultan B., Sherniyaz Z.
+            </Text>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -173,5 +191,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#64748B",
     marginTop: 4,
+  },
+  themeSwitchRow: {
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 5,
+  },
+  themeSwitchLabel: {
+    fontSize: 16,
+    fontWeight: "600",
   },
 });

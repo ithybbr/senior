@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Svg, { Rect, Line, G, Text as SvgText, Path, Circle } from 'react-native-svg';
+import { useTheme } from '../theme/ThemeContext';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -68,11 +69,20 @@ const SENSORS: Sensor[] = [
   { id: 'sensor-3', label: 'microphone', x: 275, y: 360, w: 40, h: 20 },
 ];
 export default function _2dScreen() {
+  const { theme } = useTheme();
   const scale = (SCREEN_WIDTH - PADDING * 2) / MAP_W;
 
   return (
-    <View style={styles.container}>
-      <View style={styles.mapWrapper}>
+    <View style={[styles.container, { backgroundColor: theme.mapBackground }]}>
+      <View
+        style={[
+          styles.mapWrapper,
+          {
+            borderColor: theme.mapBorder,
+            backgroundColor: theme.mapBackground,
+          },
+        ]}
+      >
         <Svg
           width={MAP_W * scale}
           height={MAP_H * scale}
@@ -82,8 +92,8 @@ export default function _2dScreen() {
           <Rect
             x={15} y={15}
             width={MAP_W - 30} height={MAP_H - 30}
-            fill="#f7f7f5"
-            stroke="#222"
+            fill={theme.mapBackground}
+            stroke={theme.mapBorder}
             strokeWidth={2}
             rx={2}
           />
@@ -95,8 +105,8 @@ export default function _2dScreen() {
                 <Rect
                   x={room.x} y={room.y}
                   width={room.w} height={room.h}
-                  fill={'#e8f0fe'}
-                  stroke="#222"
+                  fill={theme.mapRoomFill}
+                  stroke={theme.mapBorder}
                   strokeWidth={1.5}
                 />
               </G>
@@ -109,7 +119,7 @@ export default function _2dScreen() {
               <Rect key={stroke.id}
                 x={stroke.x} y={stroke.y}
                 width={stroke.w} height={stroke.h}
-                fill={'#e8f0fe'}
+                fill={theme.mapRoomFill}
               />
             );
           })}
@@ -119,8 +129,8 @@ export default function _2dScreen() {
                 <Rect
                   x={pc.x} y={pc.y}
                   width={pc.w} height={pc.h}
-                  fill={'#e8f0fe'}
-                  stroke="#222"
+                  fill={theme.mapPcFill}
+                  stroke={theme.mapBorder}
                   strokeWidth={1.5}
                 />
                 <SvgText
@@ -128,7 +138,7 @@ export default function _2dScreen() {
                   y={pc.y + pc.h / 2}
                   textAnchor="middle"
                   fontSize={10}
-                  fill="#111"
+                  fill={theme.mapText}
                 >
                   {pc.label}
                 </SvgText>
@@ -141,8 +151,8 @@ export default function _2dScreen() {
                 <Circle
                   cx={sensor.x} cy={sensor.y}
                   r={sensor.w / 14}
-                  fill={'#e8f0fe'}
-                  stroke="#222"
+                  fill={theme.mapSensorFill}
+                  stroke={theme.mapBorder}
                   strokeWidth={1.5}
                 />
                 <SvgText
@@ -150,7 +160,7 @@ export default function _2dScreen() {
                   y={sensor.y + sensor.h / 2}
                   textAnchor="middle"
                   fontSize={8}
-                  fill="#111"
+                  fill={theme.mapText}
                 > 
                   {sensor.label}
                 </SvgText>
