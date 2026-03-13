@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet, Dimensions } from "react-native";
 import { WebView } from "react-native-webview";
 import { useTheme } from "../theme/ThemeContext";
 
-const panels = [8, 7, 9, 10, 14];
+const panels = [8, 7, 10, 14];
 
 const BASE_URL =
   "http://192.168.0.127:3000/d-solo/adh5qj6/enviromental-data";
