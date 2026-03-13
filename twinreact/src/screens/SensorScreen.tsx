@@ -10,7 +10,48 @@ const BASE_URL =
 
 const SensorScreen: React.FC = () => {
   const { theme } = useTheme();
+const noInteractionJS = `
+  (function () {
+    const css = document.createElement('style');
+    css.innerHTML = \`
+      html, body {
+        overflow: hidden !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        touch-action: none !important;
+        overscroll-behavior: none !important;
+        -webkit-overflow-scrolling: auto !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+      }
 
+      * {
+        -webkit-touch-callout: none !important;
+      }
+
+      a, button, input, textarea, select, [contenteditable="true"] {
+        pointer-events: none !important;
+      }
+    \`;
+    document.head.appendChild(css);
+
+    const prevent = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    };
+
+    ["touchstart", "touchmove", "touchend", "wheel", "scroll"].forEach((event) => {
+      document.addEventListener(event, prevent, { passive: false, capture: true });
+      window.addEventListener(event, prevent, { passive: false, capture: true });
+    });
+
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    true;
+  })();
+`;
   return (
     <ScrollView
       contentContainerStyle={[
@@ -29,8 +70,13 @@ const SensorScreen: React.FC = () => {
             }}
             importantForAccessibility="no-hide-descendants"
             accessibilityElementsHidden={true}
+            scrollEnabled={false}
+            bounces={false}
+            injectedJavaScript={noInteractionJS}
             style={styles.webview}
           />
+          {/* Invisible blocker above the WebView */}
+          <View style={StyleSheet.absoluteFill} pointerEvents="auto" />
         </View>
       ))}
     </ScrollView>
