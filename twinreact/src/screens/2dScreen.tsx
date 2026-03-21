@@ -64,7 +64,7 @@ const PCS: Pc[] = [
   { id: 'r-2', label: 'r2', x: 125, y: 220, w: 40, h: 20 },
 ];
 const SENSORS: Sensor[] = [
-  { id: 'sensor-1', label: 'temp/humidity', x: 150, y: 310, w: 50, h: 20 },
+  { id: 'sensor-1', label: 'temp/humidity', x: 200, y: 50, w: 40, h: 20 },
   { id: 'sensor-2', label: 'sonic/presence', x: 250, y: 170, w: 40, h: 20 },
   { id: 'sensor-3', label: 'microphone', x: 275, y: 360, w: 40, h: 20 },
 ];

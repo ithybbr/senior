@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, ScrollView, StyleSheet, Dimensions } from "react-native";
+import React, { useRef, useState } from "react";
+import { View, Text, ScrollView, StyleSheet, Dimensions, RefreshControl } from "react-native";
 import { WebView } from "react-native-webview";
 import { useTheme } from "../theme/ThemeContext";
 
@@ -10,6 +10,8 @@ const BASE_URL =
 
 const SensorScreen: React.FC = () => {
   const { theme } = useTheme();
+  const [refreshing, setRefreshing] = useState(false);
+  const webViewRefs = useRef<Record<number, WebView | null>>({});
 const noInteractionJS = `
   (function () {
     const css = document.createElement('style');
@@ -52,12 +54,32 @@ const noInteractionJS = `
     true;
   })();
 `;
+
+  const reloadAllPanels = () => {
+    setRefreshing(true);
+
+    panels.forEach((panelId) => {
+      webViewRefs.current[panelId]?.reload();
+    });
+
+    // stop spinner after a moment
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1200);
+  };
+
   return (
     <ScrollView
       contentContainerStyle={[
         styles.container,
         { backgroundColor: theme.screenBackground },
       ]}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={reloadAllPanels}
+        />
+      }
     >
       {panels.map((p) => (
         <View
@@ -65,9 +87,16 @@ const noInteractionJS = `
           style={[styles.card, { backgroundColor: theme.cardBackground }]}
         >
           <WebView
+            ref={(ref) => {
+              webViewRefs.current[p] = ref;
+            }}
             source={{
               uri: `${BASE_URL}?panelId=panel-${p}&__feature.dashboardSceneSolo=true&kiosk`,
             }}
+            cacheEnabled={true}
+            cacheMode="LOAD_DEFAULT"
+            domStorageEnabled={true}
+            thirdPartyCookiesEnabled={true}
             importantForAccessibility="no-hide-descendants"
             accessibilityElementsHidden={true}
             scrollEnabled={false}
