@@ -40,10 +40,10 @@ export default function BottomTabs() {
         tabBarActiveTintColor: theme.tabActiveTint,
       })}
     >
-      <Tab.Screen name="About" component={AboutScreen} />
       <Tab.Screen name="Pcs" component={PcScreen} />
       <Tab.Screen name="Sensors" component={SensorScreen} />
       <Tab.Screen name="2D Map" component={_2dScreen} />
+      <Tab.Screen name="About" component={AboutScreen} />
     </Tab.Navigator>
   );
 }
