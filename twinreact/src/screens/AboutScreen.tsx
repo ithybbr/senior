@@ -30,8 +30,8 @@ export default function AboutScreen() {
             <View style={styles.cardBody}>
               <Text style={[styles.cardTitle, { color: theme.cardTitle }]}>Data Collection</Text>
               <Text style={[styles.cardText, { color: theme.cardText }]}>
-                Uses ESP32 and Raspberry Pi Pico W with DHT11 (Temp/Humidity) 
-                and MQ-3 (Gas) sensors to monitor the lab environment.
+                Uses ESP32 and Raspberry Pi with DHT11 (Temp/Humidity), Microphone, 
+                and Ultra Sonic sensors to monitor the lab environment.
               </Text>
             </View>
           </View>
@@ -63,7 +63,7 @@ export default function AboutScreen() {
             <View style={styles.cardBody}>
               <Text style={[styles.cardTitle, { color: theme.cardTitle }]}>Intelligence</Text>
               <Text style={[styles.cardText, { color: theme.cardText }]}>
-                Integrated ML layer for anomaly detection and automated 
+                Integrated ML layer for automated 
                 people counting using visual inputs.
               </Text>
             </View>

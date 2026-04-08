@@ -9,12 +9,11 @@ import {
 import { WebView } from "react-native-webview";
 import { useTheme } from "../theme/ThemeContext";
 
-const panels = [3,2, 15,16, 19,20 ,24,26, 29,33, 11,12, 32,30, 35,36, 38,39, 41,42];
-const pcs = [4, 23, 18, 27, 28, 13, 31, 34, 37, 40];
+const panels = [43];
 const BASE_URL =
   "http://192.168.0.127:3000/d-solo/adh5qj6/enviromental-data";
 
-const PcScreen: React.FC = () => {
+const MlScreen: React.FC = () => {
   const { theme } = useTheme();
   const [refreshing, setRefreshing] = useState(false);
 
@@ -80,9 +79,7 @@ const PcScreen: React.FC = () => {
     panels.forEach((panelId) => {
       webViewRefs.current[panelId]?.reload();
     });
-    pcs.forEach((panelId) => {
-      webViewRefs.current[panelId]?.reload();
-    });
+
     // stop spinner after a moment
     setTimeout(() => {
       setRefreshing(false);
@@ -102,25 +99,6 @@ const PcScreen: React.FC = () => {
         />
       }
     >
-      <View style={styles.gridContainer}>
-        {pcs.map((p) => (
-          <View
-            key={p}
-            style={[styles.scard, { backgroundColor: theme.cardBackground }]}
-          >
-            <WebView {...getWebviewProps(noInteractionJS, styles.webview)}
-              ref={(ref) => {
-                webViewRefs.current[p] = ref;
-              }}
-              source={{
-                uri: `${BASE_URL}?panelId=panel-${p}&__feature.dashboardSceneSolo=true&kiosk`,
-              }}
-            />
-
-            <View style={StyleSheet.absoluteFill} pointerEvents="auto" />
-          </View>
-        ))}
-      </View>
       <View style={styles.listContainer}>
         {panels.map((p) => (
           <View
@@ -144,16 +122,12 @@ const PcScreen: React.FC = () => {
   );
 };
 
-export default PcScreen;
+export default MlScreen;
 
 const styles = StyleSheet.create({
   container: {
     padding: 16,
     alignItems: "center",
-  },
-  gridContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
   },
   listContainer: {
     marginTop: 20,
@@ -162,15 +136,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width - 32,
     height: 250,
     marginBottom: 20,
-    borderRadius: 12,
-    overflow: "hidden",
-    backgroundColor: "#fff",
-    elevation: 3,
-  },
-  scard: {
-    width: "20%",
-    height: 70,
-    margin: 5,
     borderRadius: 12,
     overflow: "hidden",
     backgroundColor: "#fff",

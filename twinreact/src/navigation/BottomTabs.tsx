@@ -6,6 +6,7 @@ import PcScreen from "../screens/PcScreen";
 import SensorScreen from "../screens/SensorScreen";
 import _2dScreen from "../screens/2dScreen";
 import { useTheme } from "../theme/ThemeContext";
+import MlScreen from "../screens/MlScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +15,7 @@ const icons = {
   Pcs: require("../assets/icons/computer.png"),
   Sensors: require("../assets/icons/sensor.png"),
   "2D Map": require("../assets/icons/2d.png"),
+  Ml: require("../assets/icons/ml.png"),
 };
 
 export default function BottomTabs() {
@@ -42,6 +44,7 @@ export default function BottomTabs() {
     >
       <Tab.Screen name="Pcs" component={PcScreen} />
       <Tab.Screen name="Sensors" component={SensorScreen} />
+      <Tab.Screen name="Ml" component={MlScreen} />
       <Tab.Screen name="2D Map" component={_2dScreen} />
       <Tab.Screen name="About" component={AboutScreen} />
     </Tab.Navigator>
