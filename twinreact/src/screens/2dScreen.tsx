@@ -65,7 +65,7 @@ const PCS: Pc[] = [
 ];
 const SENSORS: Sensor[] = [
   { id: 'sensor-1', label: 'temp/humidity', x: 200, y: 50, w: 40, h: 20 },
-  { id: 'sensor-2', label: 'sonic/presence', x: 250, y: 170, w: 40, h: 20 },
+  { id: 'sensor-2', label: 'ultrasonic', x: 250, y: 170, w: 40, h: 20 },
   { id: 'sensor-3', label: 'microphone', x: 275, y: 360, w: 40, h: 20 },
 ];
 export default function _2dScreen() {

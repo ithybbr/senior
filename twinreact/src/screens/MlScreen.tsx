@@ -79,7 +79,7 @@ const MlScreen: React.FC = () => {
     panels.forEach((panelId) => {
       webViewRefs.current[panelId]?.reload();
     });
-
+    webViewRefs.current[0]?.reload(); // reload the additional WebView
     // stop spinner after a moment
     setTimeout(() => {
       setRefreshing(false);
@@ -113,10 +113,22 @@ const MlScreen: React.FC = () => {
                 uri: `${BASE_URL}?panelId=panel-${p}&__feature.dashboardSceneSolo=true&kiosk`,
               }}
             />
-
             <View style={StyleSheet.absoluteFill} pointerEvents="auto" />
           </View>
         ))}
+      </View>
+      <View
+        style={[styles.card, { backgroundColor: theme.cardBackground }]}
+      >
+        <WebView {...getWebviewProps(noInteractionJS, styles.webview)}
+              ref={(ref) => {
+                webViewRefs.current[0] = ref;
+              }}
+          source={{
+            uri: `http://192.168.0.174:8225/`,
+          }}
+        />
+        <View style={StyleSheet.absoluteFill} pointerEvents="auto" />
       </View>
     </ScrollView>
   );
@@ -128,6 +140,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     alignItems: "center",
+    height: "100%",
   },
   listContainer: {
     marginTop: 20,
@@ -144,4 +157,7 @@ const styles = StyleSheet.create({
   webview: {
     flex: 1,
   },
+  body: {
+    backgroundColor: "#fff",
+  }
 });

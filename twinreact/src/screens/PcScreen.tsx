@@ -9,8 +9,8 @@ import {
 import { WebView } from "react-native-webview";
 import { useTheme } from "../theme/ThemeContext";
 
-const panels = [3,2, 15,16, 19,20 ,24,26, 29,33, 11,12, 32,30, 35,36, 38,39, 41,42];
-const pcs = [4, 23, 18, 27, 28, 13, 31, 34, 37, 40];
+const panels = [3, 15, 19 ,24, 29, 11, 32, 35, 38, 41];
+const pcs = [4, 17, 18, 27, 28, 13, 31, 34, 37, 40];
 const BASE_URL =
   "http://192.168.0.127:3000/d-solo/adh5qj6/enviromental-data";
 
