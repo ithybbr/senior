@@ -1,0 +1,5 @@
+Model: yolo11n
+weights size: 5,345 kb
+Parameters: 2,590,035
+Estimated size while running: 9.9 MB (float32)
+VRAM used: 10.2 MB
