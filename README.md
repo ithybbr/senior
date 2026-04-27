@@ -14,12 +14,14 @@ Implemented in React Native.
 
 ---
 
-ml:
-  weights has .pt files that store ml models
-  images are evaluation results
-    detector: 
-      people_detector.py runs ml model
-      server.py runs the server that shows output from people_detector.py
+### ML
+
+- **weights** – contains `.pt` files (trained ML models)
+- **images** – evaluation results
+- **detector**
+  - `people_detector.py` – runs ML model
+  - `server.py` – runs server that shows output from detector
+      
 ---
 
 microcontroller has a general script for microcontrollers. it uses threading, unnecessary (the ones that are not present for microcontroller) function calls are commented out.
