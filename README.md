@@ -14,7 +14,7 @@ Implemented in React Native.
 
 ---
 
-### ML
+### ml
 
 - **weights** – contains `.pt` files (trained ML models)
 - **images** – evaluation results
@@ -28,6 +28,6 @@ microcontroller has a general script for microcontrollers. it uses threading, un
 
 ---
 
-pcs:
-  script.sh sends message with pc data to the server via mqtt.
-  start.sh sets up crontab for script.sh
+### pcs
+  - **`script.sh`** - sends message with pc data to the server via mqtt.
+  - **`start.sh`** - sets up crontab for script.sh
