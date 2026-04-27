@@ -7,3 +7,7 @@ INSTRUCTIONS:
 4. there is dark mode option at the end of the last tab.
 
 Implemented in React Native. Grafana Server and InfluxDB are on WorkStation 7, ML model, microcontroller script, and Flask server which displays live images are on WorkStation 12. WorkStation 7 is mqtt server, other PCs are mqtt clients. Mqtt messages are sent using Crontab (crontab -l to get where scripts are stored). 
+
+ml:
+weights has .pt files that store ml models
+images are evaluation results
