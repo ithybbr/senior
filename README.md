@@ -43,3 +43,5 @@ INSTRUCTIONS:
 > You can duplicate existing dashboards (one for status and the other one for cpu and memory usage).
 > After that, change the hostname of the mqtt topic "pcs/$(hostname)".
 > To get the hostname you can run `hostname` command in the terminal, look into tmp/script.log, or get all the topics in InfluxDB(on WorkStation 7) (Data explorer -> Bucket(Test1) -> Filter(topic))
+> [!NOTE]
+> PC needs to be connected to IoTlab_Public otherwise it won't work
