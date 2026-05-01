@@ -38,7 +38,8 @@ INSTRUCTIONS:
 1. download scripts (`script.sh` and `start.sh`) inside of pcs directory.
 2. put these scripts in the same folder
 3. run `start.sh`. It will set up crontab scheduler for `script.sh`.
-4. Create dashboard in the Grafana (on workstation 7).
+4. Create dashboard in the Grafana (on WorkStation 7).
 > [!TIP]
 > You can duplicate existing dashboards (one for status and the other one for cpu and memory usage).
 > After that, change the hostname of the mqtt topic "pcs/$(hostname)".
+> To get the hostname you can run `hostname` command in the terminal, look into tmp/script.log, or get all the topics in InfluxDB(on WorkStation 7) (Data explorer -> Bucket(Test1) -> Filter(topic))
