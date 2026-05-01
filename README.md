@@ -12,6 +12,8 @@ INSTRUCTIONS:
 
 Implemented in React Native.
 
+Download the latest release from the [Releases page](https://github.com/ithybbr/senior/releases/latest).
+
 ---
 
 ### ml
@@ -31,3 +33,12 @@ microcontroller has a general script for microcontrollers. it uses threading, un
 ### pcs
   - **`script.sh`** - sends message with pc data to the server via mqtt.
   - **`start.sh`** - sets up crontab for script.sh
+
+INSTRUCTIONS:
+1. download scripts (`script.sh` and `start.sh`) inside of pcs directory.
+2. put these scripts in the same folder
+3. run `start.sh`. It will set up crontab scheduler for `script.sh`.
+4. Create dashboard in the Grafana (on workstation 7).
+> [!TIP]
+> You can duplicate existing dashboards (one for status and the other one for cpu and memory usage).
+> After that, change the hostname of the mqtt topic "pcs/$(hostname)".
